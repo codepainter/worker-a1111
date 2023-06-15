@@ -16,6 +16,9 @@ jobs:
           rm -rf "/usr/local/share/boost"
           rm -rf "$AGENT_TOOLSDIRECTORY"
 
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Download
         run: ./download.sh
         shell: bash
