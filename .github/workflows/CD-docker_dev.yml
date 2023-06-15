@@ -3,7 +3,7 @@ name: Docker Image
 on:
   push:
     branches:
-      - "main"
+      - model/majicmixRealistic_v6
 
 jobs:
   docker:
@@ -32,4 +32,5 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_REPO }}/${{ secrets.DOCKERHUB_IMG }}:dev
+          # tags: abiyasa2410/sd-worker:majicmix-relistic-v6
+          tags: ${{ secrets.DOCKERHUB_REPO }}/${{ secrets.DOCKERHUB_IMG }}:majicmix-realistic-v6
