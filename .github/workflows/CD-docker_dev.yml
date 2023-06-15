@@ -16,6 +16,9 @@ jobs:
           rm -rf "/usr/local/share/boost"
           rm -rf "$AGENT_TOOLSDIRECTORY"
 
+      - name: Download
+        run: ./download.sh
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
 
