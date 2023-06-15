@@ -3,7 +3,7 @@ name: Docker Image
 on:
   push:
     branches:
-      - model/majicmixRealistic_v6
+      - main
 
 jobs:
   docker:
