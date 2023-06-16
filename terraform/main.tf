@@ -42,6 +42,9 @@ resource "digitalocean_droplet" "docker_builder" {
   provisioner "remote-exec" {
     inline = [
       "echo 'Hello World'",
+      "fish -v",
+      "docker -v",
+      "wget -qO- https://repos-droplet.digitalocean.com/install.sh | sudo bash"
     ]
   }
 }
