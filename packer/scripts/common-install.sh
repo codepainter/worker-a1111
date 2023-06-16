@@ -12,7 +12,7 @@ sudo apt-add-repository ppa:fish-shell/release-3
 
 sudo apt-get update && wait_for_apt_lock
 
-sudo apt-get install -y git wget curl fish
+sudo apt-get install -y git wget curl fish jq
 
 
 

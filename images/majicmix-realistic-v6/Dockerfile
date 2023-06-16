@@ -51,8 +51,25 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 
 COPY --from=download /repositories/ ${ROOT}/repositories/
 
-COPY --from=download /models /stable-diffusion-webui/models/
-COPY --from=download /embeddings /stable-diffusion-webui/embeddings/
+# Stable-diffusion models
+COPY --from=download /models/Stable-diffusion/majicmixRealistic_v6.safetensors \
+                     /stable-diffusion-webui/models/Stable-diffusion/majicmixRealistic_v6.safetensors
+
+# Lora models
+COPY --from=download /models/Lora/add_detail.safetensors \
+                     /stable-diffusion-webui/models/Lora/add_detail.safetensors
+COPY --from=download /models/Lora/more_details.safetensors \
+                     /stable-diffusion-webui/models/Lora/more_details.safetensors
+COPY --from=download /models/Lora/skirtlift-v1.safetensors \
+                     /stable-diffusion-webui/models/Lora/skirtlift-v1.safetensors
+
+# Embeddings
+COPY --from=download /embeddings/easynegative.safetensors \
+                     /stable-diffusion-webui/embeddings/easynegative.safetensors
+COPY --from=download /embeddings/ng_deepnegative_v1_75t.pt \
+                     /stable-diffusion-webui/embeddings/ng_deepnegative_v1_75t.pt
+COPY --from=download /embeddings/verybadimagenegative_v1.3.pt \
+                     /stable-diffusion-webui/embeddings/verybadimagenegative_v1.3.pt
 
 RUN mkdir ${ROOT}/interrogate && cp ${ROOT}/repositories/clip-interrogator/data/* ${ROOT}/interrogate
 RUN --mount=type=cache,target=/root/.cache/pip \
