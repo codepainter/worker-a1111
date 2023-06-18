@@ -3,6 +3,10 @@
 # run from root dir 
 # eg: ./build.sh majicmix-realistic-v6
 
+BRANCH_NAME=model/$1
+
+git checkout $BRANCH_NAME
+
 FOLDERNAME=$1
 
 ./images/$FOLDERNAME/download.sh
