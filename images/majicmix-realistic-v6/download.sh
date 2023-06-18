@@ -20,6 +20,8 @@ mkdir_wget models/Lora https://civitai.com/api/download/models/62833
 mkdir_wget models/Lora https://civitai.com/api/download/models/87153
 # skirtlift-v1.safetensors
 mkdir_wget models/Lora https://civitai.com/api/download/models/10187
+# betterCuteAsian03.safetensors
+mkdir_wget models/Lora https://civitai.com/api/download/models/44501
 
 # MODELS
 mkdir -p models/Stable-diffusion 

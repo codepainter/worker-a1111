@@ -62,6 +62,8 @@ COPY --from=download /models/Lora/more_details.safetensors \
                      /stable-diffusion-webui/models/Lora/more_details.safetensors
 COPY --from=download /models/Lora/skirtlift-v1.safetensors \
                      /stable-diffusion-webui/models/Lora/skirtlift-v1.safetensors
+COPY --from=download /models/Lora/betterCuteAsian03.safetensors \
+                     /stable-diffusion-webui/models/Lora/betterCuteAsian03.safetensors
 
 # Embeddings
 COPY --from=download /embeddings/easynegative.safetensors \
