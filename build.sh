@@ -3,7 +3,7 @@
 # run from root dir 
 # eg: ./build.sh majicmix-realistic-v6
 
-BRANCH_NAME=model/$1
+BRANCH_NAME=$1
 
 git checkout $BRANCH_NAME && git pull
 
