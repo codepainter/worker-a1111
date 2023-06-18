@@ -21,6 +21,7 @@ RUN . /clone.sh BLIP https://github.com/salesforce/BLIP.git 48211a1594f1321b00f1
 
 ADD models /models
 ADD embeddings /embeddings
+ADD extensions /extensions
 
 # ---------------------------------------------------------------------------- #
 #                        Stage 3: Build the final image                        #
@@ -72,6 +73,10 @@ COPY --from=download /embeddings/ng_deepnegative_v1_75t.pt \
                      /stable-diffusion-webui/embeddings/ng_deepnegative_v1_75t.pt
 COPY --from=download /embeddings/verybadimagenegative_v1.3.pt \
                      /stable-diffusion-webui/embeddings/verybadimagenegative_v1.3.pt
+
+# Extensions
+COPY --from=download /extensions/sd-dynamic-thresholding \
+                     /stable-diffusion-webui/extensions/sd-dynamic-thresholding
 
 RUN mkdir ${ROOT}/interrogate && cp ${ROOT}/repositories/clip-interrogator/data/* ${ROOT}/interrogate
 RUN --mount=type=cache,target=/root/.cache/pip \
