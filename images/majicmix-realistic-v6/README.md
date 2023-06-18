@@ -14,4 +14,4 @@ prompt: `<lora:more_details:0.5>`
 - Skirtlift: the Astonishing Sequel to Shirtlift ([page](https://civitai.com/models/8631?modelVersionId=10187))  
   prompt: `<lora:skirtlift-v1:1> skirtlift, upskirt, curtsy,`
 - betterCuteAsian ([page](https://civitai.com/models/38567/bettercuteasian))  
-  prompt: `<lora:betterCuteAsian03:0.5>`
+  prompt: `<lora:betterCuteAsian03:0.3>`
