@@ -24,7 +24,7 @@ resource "digitalocean_ssh_key" "docker_builder" {
 
 resource "digitalocean_droplet" "docker_builder" {
   image  = local.snapshot_id
-  name   = "docker-builder"
+  name   = "worker-builder"
   region = local.region
   size   = "s-4vcpu-8gb"
   ssh_keys = [
