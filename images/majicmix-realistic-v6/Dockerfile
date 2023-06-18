@@ -75,8 +75,8 @@ COPY --from=download /embeddings/verybadimagenegative_v1.3.pt \
                      /stable-diffusion-webui/embeddings/verybadimagenegative_v1.3.pt
 
 # Extensions
-COPY --from=download /extensions/sd-dynamic-thresholding \
-                     /stable-diffusion-webui/extensions/sd-dynamic-thresholding
+COPY --from=download /extensions/ \
+                     /stable-diffusion-webui/extensions/
 
 RUN mkdir ${ROOT}/interrogate && cp ${ROOT}/repositories/clip-interrogator/data/* ${ROOT}/interrogate
 RUN --mount=type=cache,target=/root/.cache/pip \

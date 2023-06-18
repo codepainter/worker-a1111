@@ -2,12 +2,11 @@
 
 mkdir_git_clone(){
     mkdir -p $1
-    cd $1
-    git clone $2
+    git clone $2 $1
 }
 
 # EXTENSIONS
-mkdir_git_clone /extensions https://github.com/mcmonkeyprojects/sd-dynamic-thresholding.git@f02cacfc923e8bbf73f25327d722d50c458d66bb
+mkdir_git_clone extensions https://github.com/mcmonkeyprojects/sd-dynamic-thresholding.git
 
 mkdir_wget(){
     mkdir -p $1
