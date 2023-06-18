@@ -1,5 +1,14 @@
 #!/bin/sh
 
+mkdir_git_clone(){
+    mkdir -p $1
+    cd $1
+    git clone $2
+}
+
+# EXTENSIONS
+mkdir_git_clone /extensions https://github.com/mcmonkeyprojects/sd-dynamic-thresholding.git@f02cacfc923e8bbf73f25327d722d50c458d66bb
+
 mkdir_wget(){
     mkdir -p $1
     wget -nc -P $1 --content-disposition $2
@@ -27,12 +36,3 @@ mkdir_wget models/Lora https://civitai.com/api/download/models/44501
 mkdir -p models/Stable-diffusion 
 # majicmixRealistic_v6.safetensors
 mkdir_wget models/Stable-diffusion https://civitai.com/api/download/models/94640
-
-mkdir_git_clone(){
-    mkdir -p $1
-    cd $1
-    git clone $2
-}
-
-# EXTENSIONS
-mkdir_git_clone /extensions https://github.com/mcmonkeyprojects/sd-dynamic-thresholding.git@f02cacfc923e8bbf73f25327d722d50c458d66bb

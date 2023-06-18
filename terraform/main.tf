@@ -44,6 +44,7 @@ resource "digitalocean_droplet" "docker_builder" {
       "echo 'Hello World'",
       "fish -v",
       "docker -v",
+      "git clone https://github.com/codepainter/worker-a1111.git",
       "wget -qO- https://repos-droplet.digitalocean.com/install.sh | sudo bash"
     ]
   }
