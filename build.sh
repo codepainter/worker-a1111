@@ -5,7 +5,7 @@
 
 BRANCH_NAME=model/$1
 
-git checkout $BRANCH_NAME
+git checkout $BRANCH_NAME && git pull
 
 FOLDERNAME=$1
 
