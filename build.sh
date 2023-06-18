@@ -12,7 +12,7 @@ FOLDERNAME=$1
 ./images/$FOLDERNAME/download.sh
 
 REPO_NAME=abiyasa2410/sd-worker
-TAG=$FOLDERNAME
+TAG=$1
 FULL_IMAGE_NAME=$REPO_NAME:$TAG
 
 docker build \
