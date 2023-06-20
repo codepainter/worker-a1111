@@ -2,7 +2,9 @@
 
 mkdir_git_download_unzip(){
     mkdir -p $1
-    wget -qO- $2 | tar xvz -C $1
+    wget -O $1/temp.zip $2
+    unzip -n -d $1 $1/*.zip
+    rm $1/temp.zip
 }
 
 # EXTENSIONS
