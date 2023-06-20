@@ -13,6 +13,8 @@ jobs:
       REPO_NAME: ${{ secrets.DOCKERHUB_REPO }}
       TAG: majicmix-realistic-v6
     steps:
+      - uses: AutoModality/action-clean@v1
+        
       - name: Checkout
         uses: actions/checkout@v2
 
