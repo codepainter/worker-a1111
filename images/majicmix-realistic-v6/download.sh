@@ -1,12 +1,14 @@
 #!/bin/sh
 
-mkdir_git_clone(){
+mkdir_git_download_unzip(){
     mkdir -p $1
-    git clone $2 $1
+    wget -qO- $2 | bsdtar -xvf- -C $1
 }
 
 # EXTENSIONS
-mkdir_git_clone extensions https://github.com/mcmonkeyprojects/sd-dynamic-thresholding.git
+# mkdir_git_clone extensions https://github.com/mcmonkeyprojects/sd-dynamic-thresholding.git
+
+mkdir_git_download_unzip extensions https://github.com/mcmonkeyprojects/sd-dynamic-thresholding/archive/refs/heads/master.zip
 
 mkdir_wget(){
     mkdir -p $1

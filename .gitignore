@@ -198,3 +198,4 @@ terraform.rc
 
 embeddings/
 models/
+extensions/
