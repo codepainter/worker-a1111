@@ -2,7 +2,7 @@
 
 mkdir_git_download_unzip(){
     mkdir -p $1
-    wget -qO- $2 | bsdtar -xvf- -C $1
+    wget -qO- $2 | tar xvz -C $1
 }
 
 # EXTENSIONS
