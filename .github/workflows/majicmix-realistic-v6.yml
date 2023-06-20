@@ -22,9 +22,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: LL
-        run: ls -haltr
-
       # - name: Set up QEMU
       #   uses: docker/setup-qemu-action@v2
 
@@ -37,20 +34,17 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Download Models
-        run: ./images/$TAG/download.sh
-        shell: bash
-
-      - name: LL
-        run: ls -haltr
-
-      # - name: Build and Push
-      #   run: ./build.sh majicmix-realistic-v6
+      # - name: Download Models
+      #   run: ./images/$TAG/download.sh
       #   shell: bash
 
-      - name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          file: ./images/${{ env.TAG }}/Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_REPO }}/${{ secrets.DOCKERHUB_IMG }}:${{ env.TAG }}
+      - name: Build and Push
+        run: ./build.sh ${{ env.TAG }}
+        shell: bash
+
+      # - name: Build and push
+      #   uses: docker/build-push-action@v4
+      #   with:
+      #     file: ./images/${{ env.TAG }}/Dockerfile
+      #     push: true
+      #     tags: ${{ secrets.DOCKERHUB_REPO }}/${{ secrets.DOCKERHUB_IMG }}:${{ env.TAG }}
