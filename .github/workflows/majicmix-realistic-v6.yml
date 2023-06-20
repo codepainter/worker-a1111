@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DOCKER_BUILDKIT: 1
-      REPO_NAME: abiyasa2410/worker-a1111
+      REPO_NAME: ${{ secrets.DOCKERHUB_REPO }}
       TAG: majicmix-realistic-v6
     steps:
       - name: Checkout
