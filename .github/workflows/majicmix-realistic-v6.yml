@@ -10,23 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DOCKER_BUILDKIT: 1
+      REPO_NAME: abiyasa2410/worker-a1111
       TAG: majicmix-realistic-v6
     steps:
-      - name: Clear Space
-        run: |
-          rm -rf /usr/share/dotnet
-          rm -rf /opt/ghc
-          rm -rf "/usr/local/share/boost"
-          rm -rf "$AGENT_TOOLSDIRECTORY"
-
       - name: Checkout
         uses: actions/checkout@v2
-
-      # - name: Set up QEMU
-      #   uses: docker/setup-qemu-action@v2
-
-      # - name: Set up Docker Buildx
-      #   uses: docker/setup-buildx-action@v2
 
       - name: Login to Docker Hub
         uses: docker/login-action@v2
@@ -34,17 +22,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # - name: Download Models
-      #   run: ./images/$TAG/download.sh
-      #   shell: bash
-
-      - name: Build and Push
-        run: ./build.sh ${{ env.TAG }}
+      - name: Run Download Script
+        run: ./images/${{ env.TAG }}/download.sh
         shell: bash
 
-      # - name: Build and push
-      #   uses: docker/build-push-action@v4
-      #   with:
-      #     file: ./images/${{ env.TAG }}/Dockerfile
-      #     push: true
-      #     tags: ${{ secrets.DOCKERHUB_REPO }}/${{ secrets.DOCKERHUB_IMG }}:${{ env.TAG }}
+      - name: Build and Push
+        run: ./build.sh ${{ env.REPO_NAME }} ${{ env.TAG }}
+        shell: bash
