@@ -12,8 +12,11 @@ provider "digitalocean" {
 }
 
 locals {
-  snapshot_id = var.snapshot_id
-  region      = var.region
+  snapshot_id     = var.snapshot_id
+  region          = var.region
+  docker_username = var.docker_username
+  docker_password = var.docker_password
+  docker_tag      = var.docker_tag
 }
 
 resource "digitalocean_ssh_key" "docker_builder" {
@@ -39,13 +42,27 @@ resource "digitalocean_droplet" "docker_builder" {
     timeout     = "2m"
   }
 
+  provisioner "file" {
+    content     = local.docker_password
+    destination = "/var/docker-password.txt"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "echo 'Hello World'",
       "fish -v",
       "docker -v",
-      "git clone https://github.com/codepainter/worker-a1111.git",
-      "wget -qO- https://repos-droplet.digitalocean.com/install.sh | sudo bash"
+    ]
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "cat /var/docker-password.txt | docker login --username ${local.docker_username} --password-stdin",
+      "pwd && ls -haltr",
+      "git clone https://github.com/codepainter/worker-a1111.git && cd worker-a1111 && ./build.sh ${local.docker_tag}",
+      "pwd && ls -haltr",
+      # "wget -qO- https://repos-droplet.digitalocean.com/install.sh | sudo bash"
+      "echo 'Build ${local.docker_tag} Complete!'"
     ]
   }
 }

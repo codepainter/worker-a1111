@@ -25,3 +25,18 @@ variable "pub_key" {
   description = "(Required) The public key to use for SSH access to the droplet."
   default     = "~/.ssh/id_rsa.pub"
 }
+
+variable "docker_username" {
+  type        = string
+  description = "(Required) The username to use for docker login."
+}
+
+variable "docker_password" {
+  type        = string
+  description = "(Required) The password to use for docker login."
+}
+
+variable "docker_tag" {
+  type        = string
+  description = "(Required) The docker tag to use for docker login."
+}
