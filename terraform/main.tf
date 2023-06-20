@@ -55,14 +55,14 @@ resource "digitalocean_droplet" "docker_builder" {
     ]
   }
 
-  provisioner "remote-exec" {
-    inline = [
-      "cat /var/docker-password.txt | docker login --username ${local.docker_username} --password-stdin",
-      "pwd && ls -haltr",
-      "git clone https://github.com/codepainter/worker-a1111.git && cd worker-a1111 && ./build.sh ${local.docker_tag}",
-      "pwd && ls -haltr",
-      # "wget -qO- https://repos-droplet.digitalocean.com/install.sh | sudo bash"
-      "echo 'Build ${local.docker_tag} Complete!'"
-    ]
-  }
+  # provisioner "remote-exec" {
+  #   inline = [
+  #     "cat /var/docker-password.txt | docker login --username ${local.docker_username} --password-stdin",
+  #     "pwd && ls -haltr",
+  #     "git clone https://github.com/codepainter/worker-a1111.git && cd worker-a1111 && git checkout ${local.docker_tag} && ./build.sh ${local.docker_tag}",
+  #     "pwd && ls -haltr",
+  #     # "wget -qO- https://repos-droplet.digitalocean.com/install.sh | sudo bash"
+  #     "echo 'Build ${local.docker_tag} Complete!'"
+  #   ]
+  # }
 }
