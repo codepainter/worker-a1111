@@ -47,4 +47,4 @@ jobs:
         with:
           file: ./images/$TAG/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_REPO }}/${{ secrets.DOCKERHUB_IMG }}:$TAG
+          tags: ${{ secrets.DOCKERHUB_REPO }}/${{ secrets.DOCKERHUB_IMG }}:${{ env.TAG }}
